@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Menu Futbol</title>
+
+
+<style>
+
+
+body{
+
+background-color:#010e26;
+color:#FFFFFF;
+font-family:Arial, sans-serif;
+
+}
+
+
+
+.contenedor{
+
+display:flex;
+justify-content:center;
+border:1px solid white;
+padding:20px;
+
+}
+
+
+
+.titulo{
+
+color:#FFFFFF;
+
+}
+
+
+
+.menu{
+
+border:1px solid white;
+width:70%;
+margin:40px auto;
+padding:30px;
+text-align:center;
+
+}
+
+
+
+h2{
+
+font-size:40px;
+
+}
+
+
+
+p{
+
+font-size:22px;
+
+}
+
+
+
+.botones{
+
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+
+}
+
+
+
+.boton_1{
+
+padding:12px 25px;
+
+color:#FFFFFF;
+
+background:transparent;
+
+border:2px solid #39ff14;
+
+border-radius:6px;
+
+text-decoration:none;
+
+margin:10px;
+
+box-shadow:
+
+0 0 8px rgba(57,255,20,0.6),
+
+inset 0 0 10px rgba(57,255,20,0.15);
+
+}
+
+
+
+.boton_1:hover{
+
+background:#39ff14;
+
+color:#010e26;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+<div class="contenedor">
+
+<h1 class="titulo">
+
+⚽ Academia Futbol ⚽
+
+</h1>
+
+</div>
+
+</header>
+
+
+
+
+
+<div class="menu">
+
+
+<h2 id="saludo">
+
+Bienvenido jugador ⚽
+
+</h2>
+
+
+
+<p>
+
+Selecciona tu entrenamiento:
+
+</p>
+
+
+
+<div class="botones">
+
+
+<a href="index.html" class="boton_1">
+
+⚽ Perfil
+
+</a>
+
+
+
+<a href="Juego.html" class="boton_1">
+
+🎮 Juego
+
+</a>
+
+
+
+<a href="Diario.html" class="boton_1">
+
+📝 Diario
+
+</a>
+
+
+
+<a href="Tareas.html" class="boton_1">
+
+✅ Tareas
+
+</a>
+
+
+
+<a href="Calculadora.html" class="boton_1">
+
+📊 Calculadora de notas
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+let usuario = localStorage.getItem("usuario");
+
+
+
+if(usuario){
+
+
+document.getElementById("saludo").innerHTML =
+
+"Bienvenido al equipo, " + usuario + " ⚽";
+
+
+}
+
+else{
+
+
+document.getElementById("saludo").innerHTML =
+
+"Bienvenido jugador ⚽";
+
+
+}
+
