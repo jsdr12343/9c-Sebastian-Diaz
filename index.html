@@ -4,8 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juan Sebastian</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+
+    <style>
+        body{
+            background-color:#010e26;
+            color:#FFFFFF;
+            font-family:Arial, sans-serif;
+            margin:0;
+        }
+
+        header{
+            display:flex;
+            justify-content:center;
+            border-bottom:1px solid white;
+            padding:20px;
+        }
+
+        .titulo{
+            color:white;
+        }
+
+        .conten-principal{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            align-items:flex-start;
+            gap:30px;
+            padding:30px;
+        }
+
+        .conten-imagen{
+            text-align:center;
+        }
+
+        .foto{
+            width:280px;
+            height:280px;
+            object-fit:cover;
+            border:3px solid #39ff14;
+            border-radius:10px;
+            box-shadow:0 0 20px rgba(57,255,20,0.5);
+        }
+
+        .conten-parrafo{
+            max-width:850px;
+            text-align:center;
+        }
+
+        .p-nombre{
+            font-size:35px;
+        }
+
+        .parrafo{
+            font-size:20px;
+        }
+
+        .botones_1{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            margin:20px 0;
+        }
+
+        .boton_1{
+            padding:12px 25px;
+            color:#FFFFFF;
+            background:transparent;
+            border:2px solid #39ff14;
+            border-radius:6px;
+            margin:10px;
+            cursor:pointer;
+            font-size:16px;
+            text-decoration:none;
+            box-shadow:0 0 8px rgba(57,255,20,0.6);
+        }
+
+        .boton_1:hover{
+            background:#39ff14;
+            color:#010e26;
+        }
+
+        .horario{
+            border:1px solid white;
+            padding:20px;
+            margin-top:20px;
+            overflow-x:auto;
+        }
+
+        .tabla{
+            border-collapse:collapse;
+            width:100%;
+        }
+
+        .tabla th,
+        .tabla td{
+            border:1px solid #39ff14;
+            padding:10px;
+            text-align:center;
+        }
+
+        .tabla th{
+            background:rgba(57,255,20,0.15);
+        }
+    </style>
+
 </head>
 
 <body>
@@ -22,7 +124,7 @@
 
     <div class="conten-imagen">
 
-        <img src="foto.png" alt="Foto Juan Sebastian" class="foto">
+        <img src="foto.svg" alt="Foto Juan Sebastian" class="foto">
 
     </div>
 
@@ -48,9 +150,15 @@
                 Boton 2
             </button>
 
-            <a href="Registro.html">
+            <a href="registro.html">
                 <button class="boton_1">
                     Boton 3
+                </button>
+            </a>
+
+            <a href="menu.html">
+                <button class="boton_1">
+                    Menu
                 </button>
             </a>
 
@@ -172,5 +280,30 @@
 </div>
 
 
+<script>
+let btnToggle = document.getElementById("btn-toggle");
+let btnColor = document.getElementById("btn-color");
+let horario = document.getElementById("horario");
+
+btnToggle.addEventListener("click", () => {
+    if (horario.style.display === "none") {
+        horario.style.display = "block";
+        btnToggle.innerHTML = "Ocultar horario";
+    } else {
+        horario.style.display = "none";
+        btnToggle.innerHTML = "Mostrar horario";
+    }
+});
+
+let colores = ["#010e26", "#1a0033", "#003322", "#330000", "#002244"];
+let indice = 0;
+
+btnColor.addEventListener("click", () => {
+    indice = (indice + 1) % colores.length;
+    document.body.style.backgroundColor = colores[indice];
+});
+</script>
+
 </body>
 </html>
+
