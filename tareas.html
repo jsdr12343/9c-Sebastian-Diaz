@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tareas Futbol</title>
+
+
+<style>
+
+
+body{
+
+background-color:#010e26;
+color:#FFFFFF;
+font-family:Arial, sans-serif;
+
+}
+
+
+
+header{
+
+display:flex;
+justify-content:center;
+border:1px solid white;
+padding:20px;
+
+}
+
+
+
+.titulo{
+
+color:white;
+
+}
+
+
+
+.contenedor-tareas{
+
+border:1px solid white;
+width:70%;
+margin:40px auto;
+padding:30px;
+text-align:center;
+
+}
+
+
+
+input{
+
+width:70%;
+padding:10px;
+
+background:transparent;
+color:white;
+
+border:2px solid #39ff14;
+border-radius:6px;
+
+}
+
+
+
+.boton_1{
+
+padding:12px 25px;
+
+color:#FFFFFF;
+
+background:transparent;
+
+border:2px solid #39ff14;
+
+border-radius:6px;
+
+margin:10px;
+
+cursor:pointer;
+
+box-shadow:
+0 0 8px rgba(57,255,20,0.6);
+
+}
+
+
+
+.boton_1:hover{
+
+background:#39ff14;
+color:#010e26;
+
+}
+
+
+
+.tarea{
+
+border:1px solid white;
+
+margin:15px;
+
+padding:15px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+
+
+.completa{
+
+text-decoration:line-through;
+
+color:#39ff14;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+<h1 class="titulo">
+⚽ Tareas del Jugador ⚽
+</h1>
+
+</header>
+
+
+
+
+<div class="contenedor-tareas">
+
+
+<h2>
+Entrenamiento y objetivos
+</h2>
+
+
+
+<input id="nuevaTarea" placeholder="Escribe una tarea">
+
+
+
+<button class="boton_1" id="agregar">
+
+Agregar
+
+</button>
+
+
+
+<a href="Menu.html" class="boton_1">
+
+Volver al menú
+
+</a>
+
+
+
+<h2>
+Lista de tareas
+</h2>
+
+
+
+<div id="listaTareas">
+
+</div>
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+let boton=document.getElementById("agregar");
+
+let lista=document.getElementById("listaTareas");
+
+
+
+function mostrarTareas(){
+
+
+lista.innerHTML="";
+
+
+let tareas=JSON.parse(localStorage.getItem("tareas")) || [];
+
+
+
+tareas.forEach((tarea,index)=>{
+
+
+let div=document.createElement("div");
+
+
+div.className="tarea";
+
+
+
+if(tarea.completa){
+
+div.classList.add("completa");
+
+}
+
+
+
+div.innerHTML=`
+
+<span onclick="completar(${index})">
+
+${tarea.texto}
+
+</span>
+
+
+<button class="boton_1" onclick="eliminar(${index})">
+
+Eliminar
+
+</button>
+
+`;
+
+
+
+lista.appendChild(div);
+
+
+
+});
+
+
+
+}
+
+
+
+
+boton.addEventListener("click",()=>{
+
+
+let texto=document.getElementById("nuevaTarea").value;
+
+
+
+if(texto===""){
+
+alert("Escribe una tarea");
+
+return;
+
+}
+
+
+
+let tareas=JSON.parse(localStorage.getItem("tareas")) || [];
+
+
+
+tareas.push({
+
+texto:texto,
+
+completa:false
+
+});
+
+
+
+localStorage.setItem("tareas",JSON.stringify(tareas));
+
+
+
+document.getElementById("nuevaTarea").value="";
+
+
+
+mostrarTareas();
+
+
+
+});
+
+
+
+
+
+function completar(index){
+
+
+let tareas=JSON.parse(localStorage.getItem("tareas")) || [];
+
+
+tareas[index].completa=!tareas[index].completa;
+
+
+localStorage.setItem("tareas",JSON.stringify(tareas));
+
+
+mostrarTareas();
+
+
+}
+
+
+
+
+
+function eliminar(index){
+
+
+let tareas=JSON.parse(localStorage.getItem("tareas")) || [];
+
+
+tareas.splice(index,1);
+
+
+localStorage.setItem("tareas",JSON.stringify(tareas));
+
+
+mostrarTareas();
+
+
+}
+
+
+
+
+
+mostrarTareas();
+
+
+</script>
+
+
+
+</body>
+
+</html>
