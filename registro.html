@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Futbol</title>
+
+    <style>
+
+    body{
+        background-color:#010e26;
+        color:#FFFFFF;
+        font-family:Arial, sans-serif;
+    }
+
+    .contenedor{
+        display:flex;
+        justify-content:center;
+        border:1px solid white;
+        padding:20px;
+    }
+
+    .titulo{
+        color:#FFFFFF;
+    }
+
+    .registro{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        border:1px solid white;
+        width:400px;
+        margin:50px auto;
+        padding:30px;
+    }
+
+    h2{
+        color:#FFFFFF;
+        font-size:35px;
+    }
+
+    input{
+        width:80%;
+        padding:10px;
+        margin:10px;
+        border-radius:6px;
+        border:2px solid #39ff14;
+        background:transparent;
+        color:white;
+    }
+
+    .boton_1{
+        padding:10px 20px;
+        color:#FFFFFF;
+        background:transparent;
+        border:2px solid #39ff14;
+        border-radius:6px;
+        box-shadow:0 0 8px rgba(57,255,20,0.6);
+        margin:10px;
+        cursor:pointer;
+    }
+
+    .boton_1:hover{
+        background:#39ff14;
+        color:#010e26;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="contenedor">
+        <h1 class="titulo">⚽ Registro Futbol ⚽</h1>
+    </div>
+</header>
+
+
+<div class="registro">
+
+<h2>Crear Usuario</h2>
+
+<input type="text" id="nombre" placeholder="Nombre de jugador">
+
+<input type="password" id="clave" placeholder="Contraseña">
+
+
+<button class="boton_1" id="registrar">
+Registrarse
+</button>
+
+
+</div>
+
+
+
+<script>
+
+const boton=document.getElementById("registrar");
+
+
+boton.addEventListener("click",()=>{
+
+    let nombre=document.getElementById("nombre").value;
+    let clave=document.getElementById("clave").value;
+
+
+    if(nombre==="" || clave===""){
+        alert("Completa todos los campos");
+    }
+
+    else{
+
+        localStorage.setItem("usuario",nombre);
+        localStorage.setItem("clave",clave);
+
+
+        alert("Jugador registrado correctamente");
+
+
+        window.location.href="Menu.html";
+
+    }
+
+
+});
+
+
+</script>
+
+
+</body>
+</html>
