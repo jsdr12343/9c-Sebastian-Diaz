@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Juego Futbol</title>
+
+
+<style>
+
+
+body{
+
+background-color:#010e26;
+color:#FFFFFF;
+font-family:Arial, sans-serif;
+text-align:center;
+
+}
+
+
+
+header{
+
+border:1px solid white;
+padding:20px;
+
+}
+
+
+.titulo{
+
+color:white;
+
+}
+
+
+
+.juego{
+
+border:1px solid white;
+width:70%;
+margin:40px auto;
+padding:30px;
+
+}
+
+
+
+h2{
+
+font-size:35px;
+
+}
+
+
+#balon{
+
+font-size:80px;
+cursor:pointer;
+margin:30px;
+
+}
+
+
+
+#balon:hover{
+
+transform:scale(1.2);
+
+}
+
+
+
+#marcador{
+
+font-size:30px;
+color:#39ff14;
+
+}
+
+
+
+.boton_1{
+
+padding:12px 25px;
+color:#FFFFFF;
+background:transparent;
+border:2px solid #39ff14;
+border-radius:6px;
+text-decoration:none;
+margin:10px;
+
+box-shadow:
+0 0 8px rgba(57,255,20,0.6),
+inset 0 0 10px rgba(57,255,20,0.15);
+
+cursor:pointer;
+
+}
+
+
+
+.boton_1:hover{
+
+background:#39ff14;
+color:#010e26;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1 class="titulo">
+⚽ Entrenamiento de Penales ⚽
+</h1>
+
+</header>
+
+
+
+<div class="juego">
+
+
+<h2>
+Marca goles para ganar el partido
+</h2>
+
+
+<p>
+Haz clic en el balón para lanzar penales
+</p>
+
+
+
+<div id="balon">
+⚽
+</div>
+
+
+
+<div id="marcador">
+
+Goles: 0 / 10
+
+</div>
+
+
+
+<br>
+
+
+<a href="Menu.html" class="boton_1">
+Volver al menú
+</a>
+
+
+</div>
+
+
+
+
+<script>
+
+
+let goles=0;
+
+
+let balon=document.getElementById("balon");
+
+let marcador=document.getElementById("marcador");
+
+
+
+balon.addEventListener("click",()=>{
+
+
+if(goles<10){
+
+goles++;
+
+
+marcador.innerHTML=
+"Goles: "+goles+" / 10";
+
+
+}
+
+
+
+if(goles==10){
+
+
+alert("🏆 Ganaste el entrenamiento de penales");
+
+
+}
+
+
+});
+
+
+
+</script>
+
+
+
+</body>
+</html>
