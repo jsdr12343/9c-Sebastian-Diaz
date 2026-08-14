@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diario Futbol</title>
+
+
+<style>
+
+
+body{
+
+background-color:#010e26;
+color:#FFFFFF;
+font-family:Arial, sans-serif;
+
+}
+
+
+
+header{
+
+display:flex;
+justify-content:center;
+border:1px solid white;
+padding:20px;
+
+}
+
+
+.titulo{
+
+color:white;
+
+}
+
+
+
+.diario{
+
+border:1px solid white;
+width:70%;
+margin:40px auto;
+padding:30px;
+text-align:center;
+
+}
+
+
+
+input, textarea{
+
+width:80%;
+padding:10px;
+margin:10px;
+
+background:transparent;
+color:white;
+
+border:2px solid #39ff14;
+border-radius:6px;
+
+}
+
+
+
+textarea{
+
+height:120px;
+
+}
+
+
+
+.boton_1{
+
+padding:12px 25px;
+color:#FFFFFF;
+
+background:transparent;
+
+border:2px solid #39ff14;
+
+border-radius:6px;
+
+margin:10px;
+
+box-shadow:
+0 0 8px rgba(57,255,20,0.6);
+
+cursor:pointer;
+
+}
+
+
+
+.boton_1:hover{
+
+background:#39ff14;
+color:#010e26;
+
+}
+
+
+
+.entrada{
+
+border:1px solid white;
+margin:15px;
+padding:15px;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+<h1 class="titulo">
+⚽ Diario del Jugador ⚽
+</h1>
+
+</header>
+
+
+
+
+<div class="diario">
+
+
+<h2>
+Mi experiencia en el equipo
+</h2>
+
+
+
+<input id="tituloEntrada" placeholder="Título de la entrada">
+
+
+<input id="fechaEntrada" type="date">
+
+
+
+<textarea id="textoEntrada" placeholder="Escribe tu experiencia..."></textarea>
+
+
+
+<br>
+
+
+<button class="boton_1" id="guardar">
+
+Guardar entrada
+</button>
+
+
+
+<a href="Menu.html" class="boton_1">
+Volver al menú
+</a>
+
+
+
+<h2>
+Mis entradas
+</h2>
+
+
+<div id="lista">
+
+</div>
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+let boton=document.getElementById("guardar");
+
+let lista=document.getElementById("lista");
+
+
+
+function mostrarEntradas(){
+
+
+lista.innerHTML="";
+
+
+let entradas=JSON.parse(localStorage.getItem("diario")) || [];
+
+
+
+entradas.forEach((entrada,index)=>{
+
+
+let div=document.createElement("div");
+
+div.className="entrada";
+
+
+div.innerHTML=`
+
+<h3>${entrada.titulo}</h3>
+
+<p>📅 ${entrada.fecha}</p>
+
+<p>${entrada.texto}</p>
+
+
+<button class="boton_1" onclick="borrar(${index})">
+Borrar
+</button>
+
+`;
+
+
+lista.appendChild(div);
+
+
+});
+
+
+}
+
+
+
+boton.addEventListener("click",()=>{
+
+
+let titulo=document.getElementById("tituloEntrada").value;
+
+let fecha=document.getElementById("fechaEntrada").value;
+
+let texto=document.getElementById("textoEntrada").value;
+
+
+
+if(titulo==="" || fecha==="" || texto===""){
+
+alert("Completa todos los campos");
+
+return;
+
+}
+
+
+
+let entradas=JSON.parse(localStorage.getItem("diario")) || [];
+
+
+
+entradas.push({
+
+titulo:titulo,
+fecha:fecha,
+texto:texto
+
+});
+
+
+
+localStorage.setItem("diario",JSON.stringify(entradas));
+
+
+
+alert("Entrada guardada ⚽");
+
+
+
+mostrarEntradas();
+
+
+document.getElementById("tituloEntrada").value="";
+document.getElementById("fechaEntrada").value="";
+document.getElementById("textoEntrada").value="";
+
+
+});
+
+
+
+
+function borrar(index){
+
+
+let entradas=JSON.parse(localStorage.getItem("diario")) || [];
+
+
+entradas.splice(index,1);
+
+
+localStorage.setItem("diario",JSON.stringify(entradas));
+
+
+mostrarEntradas();
+
+
+}
+
+
+
+mostrarEntradas();
+
+
+</script>
+
+
+
+</body>
+
+</html>
